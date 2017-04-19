@@ -1,63 +1,76 @@
 package Business;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class Account {
 
-	private int accountID;
-	private String type;
-	private long Amount;
-	private int clientID;
-	private String date;
-	
-	public Account(int accountID, String type, long Amount,int clientID, String date) {
-		this.accountID = accountID;
-		this.type = type;
-		this.Amount = Amount;
-		this.clientID= clientID;
-	}
+    private int ID;
+    private String type;
+    private long funds;
+    private long ownerPNC;
+    private Date creationDate;
 
-	public Account(){
-		
-	}
-	
-	public int getaccountID() {
-		return accountID;
-	}
+    public Account()
+    {
 
-	public void setaccountID(int accountID) {
-		accountID = accountID;
-	}
+    }
 
-	public String getType() {
-		return type;
-	}
+    public Account(int ID,String type,long funds,long ownerPNC,Date creationDate)
+    {
+        this.setID(ID);
+        this.setType(type);
+        this.setFunds(funds);
+        this.setOwnerPNC(ownerPNC);
+        this.setCreationDate(creationDate);
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public Account(int ID,String type,long funds,long ownerPNC)
+    {
+        this.setID(ID);
+        this.setType(type);
+        this.setFunds(funds);
+        this.setOwnerPNC(ownerPNC);
+        this.setCreationDate(new Date());
+    }
 
-	public long getAmount() {
-		return Amount;
-	}
+    public int getID() {
+        return ID;
+    }
 
-	public void setAmount(int Amount) {
-		Amount = Amount;
-	}
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
-	public int getClientID() {
-		return clientID;
-	}
+    public String getType() {
+        return type;
+    }
 
-	public void setClientID(int clientID) {
-		this.clientID = clientID;
-	}
-	public String getDate() {
-		return date;
-	}
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	public void setDate(String date) {
-		this.date = date;
-	}
-	
-	
-	
+    public long getFunds() {
+        return funds;
+    }
+
+    public void setFunds(long funds) {
+        this.funds = funds;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public long getOwnerPNC() {
+        return ownerPNC;
+    }
+
+    public void setOwnerPNC(long ownerPNC) {
+        this.ownerPNC = ownerPNC;
+    }
 }

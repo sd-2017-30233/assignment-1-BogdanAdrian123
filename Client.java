@@ -1,65 +1,62 @@
 package Business;
 
 public class Client {
-	private int clientID;
-	private String name;
-	private int ICN;
-	private long CNP;
-	private String address;
-	
-	public Client(int clientID,String name, int ICN, long CNP, String address) {
-		this.clientID=clientID;
-		this.name = name;
-		this.ICN = ICN;
-		this.CNP = CNP;
-		this.address = address;
-	}
-	
-	public Client(){
-		
-	}
-	
-	public int getClientID(){
-		return clientID;
-	}
-	
-	public void setClientID(int clientID){
-		this.clientID=clientID;
-	}
-	
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String name;
+    private int icn;
+    private long pnc;
+    private String address;
 
-	public int getICN() {
-		return ICN;
-	}
+    public Client()
+    {
 
-	public void setIcn(int ICN) {
-		this.ICN = ICN;
-	}
+    }
 
-	public long getCNP() {
-		return CNP;
-	}
+    public Client(String name, int icn, long pnc, String address)
+    {
+        this.setName(name);
+        this.setIcn(icn);
+        this.setPnc(pnc);
+        this.setAddress(address);
+    }
 
-	public void setCNP(long cNP) {
-		CNP = cNP;
-	}
+    public void setName(String name)
+    {
+        this.name=name;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public String getName()
+    {
+        return this.name;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
-	
-	
-	
+    public void setIcn(int icn)
+    {
+        this.icn=icn;
+    }
+
+    public int getIcn()
+    {
+        return icn;
+    }
+
+    public void setPnc(long pnc)
+    {
+        this.pnc=pnc;
+    }
+
+    public long getPnc()
+    {
+        return this.pnc;
+    }
+
+    public void setAddress(String address)
+    {
+        this.address=address;
+    }
+
+    public String getAddress()
+    {
+        return this.address;
+    }
 }

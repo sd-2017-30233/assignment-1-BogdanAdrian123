@@ -1,25 +1,25 @@
 package DataAccess;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-
+import java.sql.*;
 public class MySQLConnector {
 
-	private static final String URL = "jdbc:mysql://localhost/bank";
-	private static final String USERNAME = "bogdan";
-	private static final String PASSWORD = "bogdan";
 
-	    public static Connection getConnection() {
-	        Connection connection = null;
+    public static Connection getConnection() {
+       // Connection connection = null;
 
-	        try {
-	            Class.forName("com.mysql.jdbc.Driver");
-	            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-      
-	        return connection;
-	    }
-	
+        try {
+        	String driver="com.mysql.jdbc.Driver";
+        	String url = "jdbc:mysql://localhost/assignment1";
+        	String username = "root";
+        	String password = "bogdan";
+           Class.forName(driver);
+          Connection connection = DriverManager.getConnection(url, username, password);
+        System.out.println("Conectare reusita");
+        return connection;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

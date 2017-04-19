@@ -1,0 +1,97 @@
+CREATE DATABASE  IF NOT EXISTS assignment1 ;
+USE assignment1;
+
+CREATE TABLE accounts (
+  ID int(11) NOT NULL,
+  type varchar(45) DEFAULT NULL,
+  funds bigint(20) DEFAULT NULL,
+  ownerPNC bigint(20) NOT NULL,
+  creationDate timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (ID,ownerPNC),
+  UNIQUE KEY ID_UNIQUE (ID),
+  KEY fk_accountsclients_idx (ownerPNC),
+  CONSTRAINT fk_accountsclients FOREIGN KEY (ownerPNC) REFERENCES clients (PNC) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ;
+
+
+CREATE TABLE clients (
+  name varchar(45) DEFAULT NULL,
+  ICN int(20) DEFAULT NULL,
+  PNC bigint(20) NOT NULL,
+  address varchar(45) DEFAULT NULL,
+  PRIMARY KEY (PNC),
+  UNIQUE KEY PNC_UNIQUE (PNC),
+  UNIQUE KEY ICN_UNIQUE (ICN)
+) ;
+
+
+CREATE TABLE employees (
+  ID int(11) NOT NULL,
+  Name varchar(45) DEFAULT NULL,
+  username varchar(45) DEFAULT NULL,
+  password varchar(45) DEFAULT NULL,
+  admin bit(1) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ;
+
+CREATE TABLE logs (
+  employeeID int(11) DEFAULT NULL,
+  action varchar(90) DEFAULT NULL,
+  date datetime NOT NULL,
+  PRIMARY KEY (date)
+) ;
+
+INSERT INTO accounts VALUES (1,'Savings',2000,1234567891011,'2017-03-30 16:15:10'),(2,'Deposit',1000,1234567891012,'2017-03-30 16:14:20'),(3,'Deposit',3000,1234567891124,'2017-03-30 16:15:20');
+INSERT INTO clients VALUES (' Electricity ',111111,1234567891010,' Zalau'),('client1',123456,1234567891011,'client1'),('client2',123456,1234567891012,'client2');
+INSERT INTO employees VALUES (0,'Employee','employee1','1','\0'),(1,'Admin','admin1','1','\1');
+INSERT INTO logs VALUES (0,'Viewed clients','2017-03-30 16:15:10'),(1,'Viewed client with PNC:1234567891010','2017-03-30 16:20:15');
+
+delete from accounts where accounts.id=id;
+
+delete from clients where clients.pnc=pnc;
+
+delete from employees where employees.id=id;
+
+select * from accounts where accounts.id=id;
+
+select * from accounts;
+
+select * from clients where clients.pnc=pnc;
+
+Select * from clients;
+
+select * from employees where employees.id=id;
+
+select * from employees;
+
+select * from logs where (logs.employeeID=employeeID and logs.date>fromDate and logs.date<toDate);
+
+insert into accounts values(ID,type,funds,ownerPNC,creationDate);
+
+insert into clients values(name,icn,pnc,address);
+
+insert into employees values(id,name,username,password,admin);
+
+insert into logs values(employeeID, action, date);
+
+select * from employees where employees.username=username and employees.password=password;
+
+update accounts set accounts.ID=ID, 
+					accounts.type=type,
+					accounts.funds=funds,
+					accounts.ownerPNC=ownerPNC
+where accounts.id=oldID;
+
+update clients
+set clients.pnc=pnc,
+	clients.name=name,
+	clients.icn=icn,
+	clients.address=address
+where clients.pnc=oldPNC;
+
+update employees set employees.id=id,
+					 employees.name=name,
+					employees.username=username,
+					employees.password=password,
+					employees.admin=admin
+where employees.id=oldid;
